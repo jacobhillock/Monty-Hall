@@ -9,7 +9,7 @@ def args() -> argparse.Namespace:
   args = parser.parse_args()
   return args
 
-def get_guess(options, auto, prev=0):
+def get_guess(options: list[int], auto: bool, prev: int=0) -> int:
   guess = 0
   if auto:
     new_options = list(filter(lambda o: o != prev, options))
@@ -20,7 +20,7 @@ def get_guess(options, auto, prev=0):
   
   return guess
 
-def game(auto, switch=True):
+def game(auto: bool, switch: bool=True) -> bool:
   number = 3
   options = [i + 1 for i in range(number)]
   win = random.choice(options)
@@ -35,7 +35,7 @@ def game(auto, switch=True):
 
   return win == guess
 
-def main():
+def main() -> None:
   random.seed(time.time())
   arg = args()
   if arg.auto:
